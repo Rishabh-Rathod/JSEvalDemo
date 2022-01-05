@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 
 // Write Javascript code!
 const appDiv = document.getElementById('app');
-appDiv.innerHTML = `<h1>JS Starter</h1>`;
+appDiv.innerHTML = `<h1>JS Eval</h1>`;
 
 let batchUpdates = [];
 
