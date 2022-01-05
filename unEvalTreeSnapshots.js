@@ -1,4 +1,3 @@
-
 export default [
   {
     Input1: {
@@ -35,22 +34,26 @@ export default [
       config: {
         url: "https://example.com/'",
       },
-      run: function(){
-        return Promise(function(resolve, reject){
+      run: function () {
+        return Promise(function (resolve, reject) {
           debugger;
           fetch(API.config.url)
-          .then((res) => { API.setData(res); resolve(res); })
-          .catch((error) => reject(error))
-      }) },
+            .then((res) => {
+              API.setData(res);
+              resolve(res);
+            })
+            .catch((error) => reject(error));
+        });
+      },
       data: undefined,
-      setData: (value) => { 
-        this.notify({ 
-          pathModified: "API.data", 
-          oldValue: API.data, 
-          newValue: value 
-        }); 
-        API.data = value;  
-      }
-    }
+      setData: (value) => {
+        this.notify({
+          pathModified: 'API.data',
+          oldValue: API.data,
+          newValue: value,
+        });
+        API.data = value;
+      },
+    },
   },
 ];
