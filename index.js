@@ -1,6 +1,7 @@
 // Import stylesheets
 import './style.css';
 import debounce from 'lodash/debounce';
+import produce from 'immer';
 
 // Write Javascript code!
 const appDiv = document.getElementById('app');
@@ -32,3 +33,22 @@ function notify(update) {
 // if any value is changed when update that in mainThread so that widgets can show the update
 
 // example 2:- with jsObjects
+
+const GLOBAL_CONTEXT = {
+  Input1: {
+    text: 'hello',
+  },
+};
+
+const nextState = produce(GLOBAL_CONTEXT, (draftState) => {});
+
+Object.assign(globalThis, GLOBAL_CONTEXT);
+
+const getFuncToEval = (codeSnippet, scope = {}) => {
+  return new Function(codeSnippet);
+};
+
+const funcToEval = getFuncToEval(
+  'console.log(Input1.text);Input1.text = Input1.text + 1;'
+);
+funcToEval();
